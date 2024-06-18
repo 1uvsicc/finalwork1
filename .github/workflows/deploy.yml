@@ -21,19 +21,13 @@ jobs:
       - name: prepare the docker-compose run
         run: |
           ls -l
-      - name: Set up Docker Mirror
-        run: |
-          echo "DOCKER_BUILDKIT=1" >> $GITHUB_ENV
-          echo "DOCKER_CLI_EXPERIMENTAL=enabled" >> $GITHUB_ENV
-          echo "REGISTRY_MIRROR=https://oprj8m6h.mirror.aliyuncs.com" >> $GITHUB_ENV
-      - name: Build and push
+     
         uses: docker/build-push-action@v4
         with:
           context: .
           push: true
           tags: 1uvv/todo:latest
-          build-args: |
-            --build-arg REGISTRY_MIRROR=${{ env.REGISTRY_MIRROR }}
+          
       - name: copy file via ssh password
         uses: appleboy/scp-action@v0.1.4
         with:
