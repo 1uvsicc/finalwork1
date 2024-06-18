@@ -1,5 +1,9 @@
 my name is wangyushen.
-my image is <src="https://raw.githubusercontent.com/kikikoi/nmu2024_students/main/docs/assets/20222116.png">
+
+
+
+
+my image is <img  width="40" height="40" src="https://raw.githubusercontent.com/kikikoi/nmu2024_students/main/docs/assets/20222116.png">
 
 
 
