@@ -1,23 +1,11 @@
-# Stage 0, based on Node.js, to build and compile Angular
-FROM node:10-alpine as node
+# 使用官方的 Nginx 镜像作为基础镜像
+FROM nginx:latest
 
-WORKDIR /app
+# 将本地的 HTML 文件复制到 Nginx 默认的网站根目录
+COPY ./ /usr/share/nginx/html
 
-COPY package*.json /app/
-
-RUN npm install
-
-COPY ./ /app/
-
-ARG TARGET=ng-deploy
-
-RUN npm run ${TARGET}
-
-# Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
-FROM nginx:1.13
-
-COPY --from=node /app/dist/ /usr/share/nginx/html
-
-COPY ./nginx-custom.conf /etc/nginx/conf.d/default.conf
+# 暴露 Nginx 默认的 HTTP 端口
 EXPOSE 80
 
+# 启动 Nginx 服务
+CMD ["nginx", "-g", "daemon off;"]
