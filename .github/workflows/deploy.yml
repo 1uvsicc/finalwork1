@@ -44,7 +44,7 @@ jobs:
           source: "docker-compose.yml"
           target: "/home/ubuntu/frontend"
       - name: docker compose
-        run: timeout 60m docker-compose up -d
+        
         uses: appleboy/ssh-action@v0.1.10
         with:
           host: ${{ secrets.HOST_SERVER }}
@@ -54,6 +54,7 @@ jobs:
           script: |
             cd /home/ubuntu/frontend
             echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+            timeout 60m docker-compose up -d
             docker compose down
             docker compose pull
             docker compose up -d
