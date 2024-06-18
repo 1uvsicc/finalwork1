@@ -1,0 +1,6 @@
+version: '3.3'
+services:  
+  frontend:
+    image: 1uvv/todo:latest
+    ports:
+      - "8082:80"
