@@ -20,5 +20,5 @@ my todo url is http://8.219.43.117:8082/
 
 
 
-if there is no picture in my website,please refresh the page for several times then you will see my picture
+if there is no picture in my website,please refresh the page for several times then you will see my picture or wait for some time.
 
